@@ -5,15 +5,10 @@
 //CS201 
 
 
-
-
-
 #include <iostream>
 #include <string>
 #include <fstream>
-
 #include "Assigment2Module.h"
-
 using namespace std;
 
 
@@ -29,12 +24,13 @@ int main(){
 
 	ifstream inStream;
 
-	ofstream outStream;
-
 	string  firstName[NUM_VALS], lastName[NUM_VALS];
 
-	int idNum[NUM_VALS], savingsAccountBalance[NUM_VALS], checkingAccountBalance[NUM_VALS];
+	int idNum[NUM_VALS];
 
+	double savingsAccountBalance[NUM_VALS], checkingAccountBalance[NUM_VALS];
+
+	//Open file and error check 
 	inStream.open("input.txt");
 
 	if (inStream.fail()) {
@@ -42,17 +38,18 @@ int main(){
 		exit(1);
 	}
 
+	//loop  reads the file and adds values to arrays
 
 	while (!inStream.eof()) {
 		
-		for (i=0; i < N)
+		for (int i = 0; i < NUM_VALS; ++i) {
 
-		inStream >> idNum[] >> firstName[] >> lastName >> savingsAccountBalance >> checkingAccountBalance;
-
-		// cout << idNum << firstName << lastName << savingsAccountBalance << checkingAccountBalance << endl;
-
-
+			inStream >> idNum[i] >> firstName[i] >> lastName[i] >> savingsAccountBalance[i] >> checkingAccountBalance[i];
+		}
 	}
+
+
+	
 
 	//Main Program Loop
 	while (running == true) {
@@ -68,21 +65,24 @@ int main(){
 		{
 
 		case '1':
-			//
-			PrintCustomerData();
+			//Prints All customer data
+
+			PrintCustomerData(idNum, firstName, lastName, savingsAccountBalance, checkingAccountBalance, NUM_VALS);
 			break;
+
 		case '2':
-			//
+			//Prints name and ID
 			
-			PrintNames();
+			PrintNames(idNum, firstName, lastName, NUM_VALS);
 
 			break;
 		case '3':
-			//
+			//Prints ID and account balances. Also adds the balances in a totals column
 
-			PrintTotal();
+			PrintTotal(idNum, savingsAccountBalance, checkingAccountBalance, NUM_VALS);
 
 			break;
+
 		case 'Q':
 			//Quit program
 
@@ -93,17 +93,16 @@ int main(){
 		default:
 
 			//if no valid input is input
-			cout << "Please enter choice 1, 2 , 3, or Q.\n";
+			cout << "\nWrong input. try again....\n\n\n";
 
 			break;
 		}
 	
 	}
 
-
+	cout << "\nThank your for using UMKC Bank.\n\n\n\n";
 
 	inStream.close();
-	outStream.close();
 
 	return 0;
 }

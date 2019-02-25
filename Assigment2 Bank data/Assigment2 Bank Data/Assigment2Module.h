@@ -8,7 +8,7 @@ using namespace std;
 
 char MainMenu();
 
-void PrintCustomerData(const int id[], const string first[] , const string last[], const double savings_Account[], int size );
+void PrintCustomerData(const int id[], const string first[], const string last[], const double savings_Account[], const double checking_Account[], int size);
 
 void PrintNames(const int id[], const string first[], const string last[], int size);
 
